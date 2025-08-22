@@ -15,33 +15,56 @@ mapButton.addEventListener('click', function(event) {
     }
 });
 
-// Filtreleme Butonlarını Seçme
+// Filtreleme ve Şehir Seçme Elemanlarını Seçme
 const filterButtons = document.querySelectorAll('.filter-button');
+const citySelect = document.getElementById('city-select');
+const allEventCards = document.querySelectorAll('.event-card');
 
-// Etkinlik Kartlarını Seçme
-const eventCards = document.querySelectorAll('.event-card');
+// Filtre durumlarını tutmak için değişkenler
+let activeFilterCategory = 'all';
+let selectedCity = 'all';
 
-// Her bir butona tıklama olayı ekleme
+// Kartları filtreleme fonksiyonu
+function filterEvents() {
+    allEventCards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        const cardCity = card.getAttribute('data-city');
+
+        // Hem kategori hem de şehir kontrolü
+        const isCategoryMatch = (activeFilterCategory === 'all' || activeFilterCategory === cardCategory);
+        const isCityMatch = (selectedCity === 'all' || selectedCity === cardCity);
+
+        // Eğer her iki koşul da doğruysa kartı göster
+        if (isCategoryMatch && isCityMatch) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// Butonlara tıklama olayı ekleme
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Tıklanan butonun data-filter değerini al
-        const filterCategory = button.getAttribute('data-filter');
-
         // Butonların aktiflik durumunu güncelleme
         filterButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
 
-        // Etkinlik kartlarını filtreleme
-        eventCards.forEach(card => {
-            const cardCategory = card.getAttribute('data-category');
+        // Aktif kategori filtresini güncelleme
+        activeFilterCategory = button.getAttribute('data-filter');
 
-            if (filterCategory === 'all' || filterCategory === cardCategory) {
-                card.style.display = 'block'; // Kartı göster
-            } else {
-                card.style.display = 'none'; // Kartı gizle
-            }
-        });
+        // Filtreleme fonksiyonunu çağır
+        filterEvents();
     });
+});
+
+// Şehir seçimi değiştiğinde çalışacak olay dinleyicisi
+citySelect.addEventListener('change', () => {
+    // Seçilen şehri güncelleme
+    selectedCity = citySelect.value;
+
+    // Filtreleme fonksiyonunu çağır
+    filterEvents();
 });
 
 // Arama Çubuğunu Seçme
@@ -51,7 +74,7 @@ const searchBar = document.getElementById('search-bar');
 searchBar.addEventListener('keyup', (e) => {
     const searchText = e.target.value.toLowerCase();
 
-    eventCards.forEach(card => {
+    allEventCards.forEach(card => {
         const cardTitle = card.querySelector('h4').textContent.toLowerCase();
         const cardLocation = card.querySelector('p:nth-of-type(3)').textContent.toLowerCase();
 
@@ -73,7 +96,7 @@ const modalTime = document.getElementById('modal-time');
 const modalLocation = document.getElementById('modal-location');
 
 // Etkinlik Kartlarına tıklama olayı ekleme
-eventCards.forEach(card => {
+allEventCards.forEach(card => {
     card.addEventListener('click', (e) => {
         // Eğer tıklama, "Detayları Gör" butonu üzerindeyse
         if (e.target.classList.contains('details-button')) {

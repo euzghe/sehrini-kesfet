@@ -14,10 +14,9 @@
   <h1>Şehrini Keşfet</h1>
   <nav>
     <ul>
-      <li><a href="#">Etkinlikler</a></li>
-      <li><a href="#">Gruplar</a></li>
-      <li><a href="#">Keşfet</a></li>
-      <li><a href="#">Profil</a></li>
+      <li><a href="index.html">Anasayfa</a></li>
+      <li><a href="about.html">Hakkımızda</a></li>
+      <li><a href="contact.html">İletişim</a></li>
     </ul>
   </nav>
 </header>
@@ -32,8 +31,7 @@
   <section id="map-section" style="display: none;">
     <h3>Etkinlik Haritası</h3>
     <div style="height: 400px; background-color: #ddd; display: flex; align-items: center; justify-content: center;">
-      <p>Teknik bir arıza sebebiyle şu anda kullanılamıyor.</p>
-      <p> Anlayışınız için teşekkür ederiz.</p>
+      <p>Burada interaktif bir harita olacak...</p>
     </div>
   </section>
 
@@ -42,7 +40,15 @@
     <div class="search-container">
       <input type="text" id="search-bar" placeholder="Etkinlik ara...">
     </div>
-
+    <div class="city-selector">
+      <label for="city-select">Şehir Seç:</label>
+      <select id="city-select">
+        <option value="all">Tüm Şehirler</option>
+        <option value="istanbul">İstanbul</option>
+        <option value="ankara">Ankara</option>
+        <option value="izmir">İzmir</option>
+      </select>
+    </div>
     <div class="filter-container">
       <button class="filter-button active" data-filter="all">Tümü</button>
       <button class="filter-button" data-filter="konser">Konser</button>
@@ -50,24 +56,35 @@
       <button class="filter-button" data-filter="sanat">Sanat</button>
     </div>
 
-    <article class="event-card" data-category="konser">
+    <article class="event-card" data-category="konser" data-city="istanbul">
       <img src="images/event1.jpg" alt="Duman Konseri Resmi" class="event-image">
       <div class="card-details">
         <h4>Duman Konseri</h4>
         <p>Tarih: 30 Ağustos 2025</p>
         <p>Saat: 20:00</p>
-        <p>Yer: Beşiktaş Stadyumu</p>
+        <p>Yer: Beşiktaş Stadyumu, İstanbul</p>
         <a href="#" class="details-button">Detayları Gör</a>
       </div>
     </article>
 
-    <article class="event-card" data-category="spor">
+    <article class="event-card" data-category="spor" data-city="ankara">
       <img src="images/event2.jpg" alt="Tenis Maçı Resmi" class="event-image">
       <div class="card-details">
         <h4>Tenis Maçı</h4>
         <p>Tarih: 2 Eylül 2025</p>
         <p>Saat: 18:00</p>
-        <p>Yer: Ulusal Tenis Merkezi</p>
+        <p>Yer: Ulusal Tenis Merkezi, Ankara</p>
+        <a href="#" class="details-button">Detayları Gör</a>
+      </div>
+    </article>
+
+    <article class="event-card" data-category="sanat" data-city="izmir">
+      <img src="images/event3.jpg" alt="Sanat Sergisi Resmi" class="event-image">
+      <div class="card-details">
+        <h4>Modern Sanat Sergisi</h4>
+        <p>Tarih: 15 Eylül 2025</p>
+        <p>Saat: 11:00</p>
+        <p>Yer: Çağdaş Sanatlar Müzesi, İzmir</p>
         <a href="#" class="details-button">Detayları Gör</a>
       </div>
     </article>

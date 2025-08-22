@@ -32,11 +32,11 @@ nav ul {
     padding: 0;
     list-style: none;
     display: flex;
-    justify-content: center; /* Menü elemanlarını ortalar */
+    justify-content: center;
 }
 
 nav li {
-    margin: 0 10px; /* Yan yana elemanlar arasında boşluk bırakır */
+    margin: 0 10px;
 }
 
 nav a {
@@ -230,4 +230,20 @@ footer {
 @keyframes animatetop {
     from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}
+}
+/* Şehir Seçme Kutusu Stilleri */
+.city-selector {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.city-selector label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.city-selector select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
