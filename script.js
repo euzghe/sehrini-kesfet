@@ -43,11 +43,9 @@ filterButtons.forEach(button => {
         });
     });
 });
+
 // Arama Çubuğunu Seçme
 const searchBar = document.getElementById('search-bar');
-
-// Etkinlik Kartlarını Seçme (Zaten var, tekrar yazmana gerek yok)
-// const eventCards = document.querySelectorAll('.event-card');
 
 // Arama çubuğuna yazıldığında çalışacak olay dinleyicisi
 searchBar.addEventListener('keyup', (e) => {
