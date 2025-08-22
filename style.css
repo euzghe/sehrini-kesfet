@@ -85,10 +85,20 @@ main {
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    overflow: hidden; /* Resmin köşeleri için */
 }
 
 .event-card:hover {
     transform: translateY(-5px);
+}
+
+/* Etkinlik Kartı Resim Stili */
+.event-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 10px;
 }
 
 /* Footer */
@@ -100,8 +110,29 @@ footer {
     margin-top: 2rem;
 }
 
+/* Filtre Butonları Stilleri */
+.filter-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filter-button {
+    background-color: #eee;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.filter-button:hover, .filter-button.active {
+    background-color: #40e0d0;
+    color: #003366;
+}
+
 /* Mobil Uyumlu Tasarım (Responsive Design) */
-/* Ekran genişliği 768 pikselden küçükse bu kurallar geçerli olur */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -130,4 +161,99 @@ footer {
     .event-card {
         padding: 1rem;
     }
+}
+/* Arama Çubuğu Stilleri */
+.search-container {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+#search-bar {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Etkinlik Kartı Detay Stilleri */
+.card-details {
+    padding: 0 1.5rem 1.5rem;
+    text-align: left;
+}
+
+.details-button {
+    display: inline-block;
+    background-color: #003366;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.details-button:hover {
+    background-color: #002244;
+}
+
+/* Modal (Popup) Stilleri */
+.modal {
+    display: none; /* Varsayılan olarak gizli */
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    text-align: center;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.modal-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Animasyonu */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }
